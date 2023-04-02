@@ -1,0 +1,152 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    cursor: url(assets/images/03705e2ebc4d997e.svg), auto;
+    
+}
+
+body
+{
+    overflow-x: hidden;
+    background-color: #fff;
+
+}
+
+.left 
+{
+    float: left;
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1f8aaa;
+}
+
+.right 
+{
+    float: right;
+    width: 70%;    
+    padding-top: 2vw;
+    box-sizing: border-box;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+
+.buttons
+ {
+    cursor: pointer;
+    border: none;
+    margin-top: 1vw;
+    margin-left: 2.1vw;
+    height: 2.5vw;
+    width: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(back.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.buttons:hover {
+    font-weight: 500;
+}
+
+
+
+
+
+
+.project {
+
+    width: 85%;
+    font-size: 4.5vw;
+    font-weight: 700;
+    font-style: italic;
+    color:#fff;
+    margin-left: 2vw;
+    margin-top: 1.5vw;
+    line-height: 4vw;
+    text-shadow: -1px -1px 0 #f69e35, 1px -1px 0 #f69e35, -1px 1px 0 #f69e35, 1px 1px 0 #f69e35;    
+
+}
+
+.project:hover{
+    color: white;
+    text-shadow: -2px -2px 0 #f69e35, 2px -2px 0 #f69e35;    
+}
+
+.type {
+    width: fit-content;
+    font-size: 1vw;
+    font-weight: 700;
+    background-color: #f69e35;
+    color: #fff;
+    margin-top: 1vw;
+    margin-left: 2vw;
+
+}
+
+.others {
+
+    font-size: 0.8vw;
+    font-weight: 500;
+    width: 85%;
+    margin-left: 2vw;
+
+
+
+
+}
+
+
+.productionMembers {
+
+    font-size: 0.7vw;
+    font-weight: 500;
+    width: 85%;
+    margin-left: 2vw;
+
+
+}
+
+
+.introduction {
+
+    width: 85%;
+    bottom: 2vw;
+    font-size: 1vw;
+    margin-bottom: 2vw;
+    margin-left: 2vw;
+}
+
+
+
+
+.comment {
+    margin-top: 0.5vw;
+    margin-bottom: 2vw;
+    padding-left: 5px;
+    border-left: 3px solid black;
+    font-size: 0.8vw;
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color:white;
+
+}
+
+
+iframe {
+    width: 100%;
+    height: 70vh;
+}
+
+/*# sourceMappingURL=interaction1.css.map*/
