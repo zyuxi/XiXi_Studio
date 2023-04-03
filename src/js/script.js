@@ -46,7 +46,7 @@ const gltfLoader = new THREE.GLTFLoader(loadingManager);
  *  Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const alphaShadow = textureLoader.load('../assets/texture/simpleShadow.jpg');
+const alphaShadow = textureLoader.load('');
 
 // Scene
 const scene = new THREE.Scene();
@@ -102,7 +102,7 @@ scene.add(overlay);
 let model = null;
 
 gltfLoader.load(
-    '../assets/model/dessert.gltf',
+    '../assets/model/XiXi_Studio_baker.gltf',
     (gltf) => {
         console.log(gltf);
 
@@ -299,14 +299,14 @@ btnScrollToTop.addEventListener('click', () => {
     });
 });
 
-// if (typeof(worker) !=="undefined") {
-//     // Yes! Web Worker support!
-//     var worker = new Worker("my-worker.js");
-//     worker.postMessage([5, 6]);
-//     worker.onmessage = function(e) {
-//         console.log('Message received from worker');
-//         console.log(e.data);
-//     }
-// } else {
-//     // Sorry! No Web Worker support...
-// }
+if (typeof(worker) !=="undefined") {
+    // Yes! Web Worker support!
+    var worker = new Worker("my-worker.js");
+    worker.postMessage([5, 6]);
+    worker.onmessage = function(e) {
+        console.log('Message received from worker');
+        console.log(e.data);
+    }
+} else {
+    // Sorry! No Web Worker support...
+}
