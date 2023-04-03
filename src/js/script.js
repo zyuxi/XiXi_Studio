@@ -46,7 +46,7 @@ const gltfLoader = new THREE.GLTFLoader(loadingManager);
  *  Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const alphaShadow = textureLoader.load('../assets/texture/simpleShadow.jpg');
+const alphaShadow = textureLoader.load('');
 
 // Scene
 const scene = new THREE.Scene();
