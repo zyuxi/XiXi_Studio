@@ -299,14 +299,14 @@ btnScrollToTop.addEventListener('click', () => {
     });
 });
 
-if (typeof(worker) !=="undefined") {
-    // Yes! Web Worker support!
-    var worker = new Worker("my-worker.js");
-    worker.postMessage([5, 6]);
-    worker.onmessage = function(e) {
-        console.log('Message received from worker');
-        console.log(e.data);
-    }
-} else {
-    // Sorry! No Web Worker support...
-}
+// if (typeof(worker) !=="undefined") {
+//     // Yes! Web Worker support!
+//     var worker = new Worker("my-worker.js");
+//     worker.postMessage([5, 6]);
+//     worker.onmessage = function(e) {
+//         console.log('Message received from worker');
+//         console.log(e.data);
+//     }
+// } else {
+//     // Sorry! No Web Worker support...
+// }
