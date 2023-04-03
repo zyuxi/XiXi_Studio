@@ -102,7 +102,7 @@ scene.add(overlay);
 let model = null;
 
 gltfLoader.load(
-    '../assets/model/XiXi_Studio_baker.gltf',
+    '../assets/model/dessert.gltf',
     (gltf) => {
         console.log(gltf);
 
