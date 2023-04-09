@@ -174,7 +174,7 @@ p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 5vh;
+    height: 3vh;
     border-radius: 50px;
     color: #ffffff;
     cursor: pointer;
@@ -198,21 +198,23 @@ p {
     font-size: 36px;
     /* position: absolute; */
     padding-left: 10px;
-    opacity: 0;
+    opacity: 1;
     background-color: #e2f9e8;
+    height: 3vh;
 }
 
-.content_coment {
+.content_comment {
     font-size: 24px;
     padding-left: 10px;
     /* position: absolute; */
     opacity: 0;
+    height: 2vh;
 }
 
 .panel.active {
     flex: none;
     border-radius: 0;
-    height: 50vh;
+    height: 30vh;
 }
   
 .panel.active .content_title {
@@ -220,7 +222,7 @@ p {
     transition: opacity 0.3s ease-in 0.4s;
 }
 
-.panel.active .content_coment {
+.panel.active .content_comment {
     opacity: 1;
     transition: opacity 0.3s ease-in 0.4s;
 }
