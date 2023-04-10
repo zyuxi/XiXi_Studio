@@ -195,12 +195,12 @@ p {
 }
 
 .content_title {
-    font-size: 36px;
+    font-size: 30px;
     /* position: absolute; */
     padding-left: 10px;
     opacity: 1;
     background-color: #e2f9e8;
-    height: 3vh;
+    height: 40px;
 }
 
 .content_comment {
