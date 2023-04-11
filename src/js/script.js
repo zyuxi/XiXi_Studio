@@ -5,6 +5,24 @@
 // Canvas
 const canvas = document.querySelector('canvas.webgl');
 
+//E-mail
+var email = document.getElementById("email");
+const emailToCopy = "yuxi.zhang.zyx@outlook.com"
+
+email.addEventListener("click", (event) => {
+    // console.log("1");
+    alert("Email Address 「yuxi.zhang.zyx@outlook.com」 has been copied");
+});
+
+//Wechat
+var wechat = document.getElementById("wechat");
+const wechatToCopy = "xixizi_999"
+
+wechat.addEventListener("click", (event) => {
+    // console.log("1");
+    alert("WeChat Account 「xixizi_999」 has been copied");
+});
+
 /**
  * Loaders
  */
@@ -218,8 +236,12 @@ const renderer = new THREE.WebGLRenderer({
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.setSize(sizes.width, sizes.height);
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+window.addEventListener('resize', function() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 /**
  * Animate
