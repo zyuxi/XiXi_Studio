@@ -24,6 +24,9 @@ const slides8 = document.querySelectorAll('.slide8')
 const leftBtn81 = document.getElementById('button81')
 const rightBtn82 = document.getElementById('button82')
 
+function makeItFullscreen(){
+    document.getElementById("img").classList.add('fullscreen');
+}
 
 // Photo1
 let activeSlide1 = 0
