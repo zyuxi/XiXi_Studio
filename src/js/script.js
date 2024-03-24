@@ -22,42 +22,17 @@ wechat.addEventListener("click", (event) => {
     alert("WeChat Account 「xixizi_999」 has been copied");
 });
 
-/**
- * Loaders
- */
-const loadingBarElement = document.querySelector('.loading-bar');
-const bodyElement = document.querySelector('body');
-const loadingManager = new THREE.LoadingManager(
-    () => {
-        window.setTimeout(() => {
-            gsap.to(overlayMaterial.uniforms.uAlpha, {
-                duration: 3,
-                value: 0,
-                delay: 1
-            });
-            gsap.to(overlayMaterial.uniforms.uAlpha, {
-                duration: 3,
-                value: 0,
-                delay: 1
-            });
+// document.addEventListener('DOMContentLoaded', function() {
+//     // 获取GIF元素
+//     const gif = document.getElementById('modelGif');
 
-            loadingBarElement.classList.add('ended');
-            bodyElement.classList.add('loaded');
-            loadingBarElement.style.transform = '';
+//     // 为GIF添加点击事件监听器
+//     gif.addEventListener('click', function() {
+//         console.log('GIF clicked!');
+//         // 在这里添加您希望点击GIF时执行的代码
+//     });
+// });
 
-        }, 500)
-    },
-    (itemUrl, itemsLoaded, itemsTotal) => {
-        console.log(itemUrl, itemsLoaded, itemsTotal);
-        const progressRatio = itemsLoaded / itemsTotal;
-        loadingBarElement.style.transform = `scaleX(${progressRatio})`;
-        console.log(progressRatio);
-    },
-    () => {
-
-    }
-);
-const gltfLoader = new THREE.GLTFLoader(loadingManager);
 
 /**
  *  Textures
@@ -112,38 +87,9 @@ const overlayMaterial = new THREE.ShaderMaterial({
 const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial);
 scene.add(overlay);
 
-
-/**
- * GLTF Model
- */
-let model = null;
-
-gltfLoader.load(
-    '/assets/model/XiXi Studio.gltf',
-    (gltf) => {
-        console.log(gltf);
-
-        model = gltf.scene;
-
-        const radius = 1;
-
-        model.position.x = 0;
-        model.position.y = 0;
-
-        // model.rotation.x = Math.PI * 0.2
-        // model.rotation.z = Math.PI * 0.15
-
-        model.scale.set(radius, radius, radius);
-
-        scene.add(model);
-    },
-    (progress) => {
-        console.log(progress);
-    },
-    (error) => {
-        console.error(error);
-    }
-);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('modelGif').style.display = 'block'; // 显示 GIF 图像
+});
 
 /**
  * Light
@@ -177,7 +123,7 @@ scene.add(camera);
 window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    render.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight);
 })
 
 /**
@@ -186,43 +132,35 @@ window.addEventListener('resize', function() {
 let scrollY = window.scrollY;
 let currentSection = 0;
 
-const cameraPosition = [
-    {x: -0.5, y: 1.5, z:12, targetX: 0, targetY: 0, targetZ: 0},
-    {x: -1.8, y: 0.8, z: 2.5, targetX: 0, targetY: 0, targetZ: 0},
-    {x: 1.7, y: 1.2, z: 2.5, targetX: 0, targetY: 0, targetZ: 0},
-    // {x: 0, y: 0, z: 0, targetX: 0, targetY: 0, targetZ: 0},
-    {x: -2.8, y: 0.8, z: 2.4, targetX: 0, targetY: 0, targetZ: 0},
-    {x: -2.8, y: 0.2, z: 5, targetX: 0, targetY: 0, targetZ: 0},
-    {x: 1.4, y: 1, z: 5.8, targetX: 0, targetY: 0, targetZ: 0},
+const gifStyles = [
+    { transform: 'translate(-50%, -50%) scale(1)' },
+    { transform: 'translate(20%, -100%) scale(5)' }, 
+    { transform: 'translate(-180%, -70%) scale(5)',}, 
+    { transform: 'translate(60%, -80%) scale(5)' }, 
+    { transform: 'translate(-10%, -70%) scale(2)' },
+    { transform: 'translate(-80%, -60%) scale(1.8)'}
 ];
 
+
+
 window.addEventListener('scroll', () => {
-    scrollY = window.scrollY;
-    const newSection = Math.round(scrollY / sizes.height);
+    const scrollY = window.scrollY;
+    // 假设每个部分（section）的高度与窗口高度一致
+    const currentSection = Math.min(Math.floor(scrollY / window.innerHeight), gifStyles.length - 1);
 
-    if(!!camera) {
-        currentSection = newSection;
+    // 获取GIF元素
+    const gif = document.getElementById('modelGif');
 
-        gsap.to(
-            camera.position, {
-                duration: 1.5,
-                ease: 'power2.inOut',
-                x: cameraPosition[currentSection].x,
-                y: cameraPosition[currentSection].y,
-                z: cameraPosition[currentSection].z,
-            }
-        );
-        gsap.to(
-            camera.target, {
-                duration: 1.5,
-                ease: 'power2.inOut',
-                x: cameraPosition[currentSection].targetX,
-                y: cameraPosition[currentSection].targetY,
-                z: cameraPosition[currentSection].targetZ,
-            }
-        );        
-    }
+    // 应用当前部分的GIF样式
+    const style = gifStyles[currentSection];
+    gsap.to(gif, {
+        duration: 1.5, // 动画持续时间
+        ease: "power2.inOut", // 缓动函数
+        transform: style.transform, // 更新 transform
+    });
 });
+
+
 
 /**
  * Renderer
@@ -237,6 +175,8 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x000000, 0); // 第二个参数0表示完全透明
+
 
 window.addEventListener('resize', function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -253,10 +193,10 @@ const tick = () => {
     const deltaTime = elapsedTime - lastElapsedTime;
     lastElapsedTime = elapsedTime;
 
-    if (!!model) {
-        model.position.y = Math.sin(elapsedTime * .5) * .1 - 0.1;
-        sphereShadow.material.opacity = (1 - Math.abs(model.position.y)) * 0.3;
-    }
+    // if (!!model) {
+    //     model.position.y = Math.sin(elapsedTime * .5) * .1 - 0.1;
+    //     sphereShadow.material.opacity = (1 - Math.abs(model.position.y)) * 0.3;
+    // }
 
     // Render
     renderer.render(scene, camera);
@@ -319,15 +259,3 @@ btnScrollToTop.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
-
-// if (typeof(worker) !=="undefined") {
-//     // Yes! Web Worker support!
-//     var worker = new Worker("my-worker.js");
-//     worker.postMessage([5, 6]);
-//     worker.onmessage = function(e) {
-//         console.log('Message received from worker');
-//         console.log(e.data);
-//     }
-// } else {
-//     // Sorry! No Web Worker support...
-// }

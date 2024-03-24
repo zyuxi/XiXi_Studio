@@ -15,7 +15,7 @@ body {
     background: #e5f4ff;
     position: relative;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: 'Poppins', sans-serif;
 }
 
@@ -29,12 +29,18 @@ a {
     cursor: pointer;
 }
 
-.webgl {
+#modelGif {
     position: fixed;
-    top: 0;
-    left: 0;
-    outline: none;
-    z-index: -5;
+    /* top: 50%; */
+    /* left: 50%; */
+    transform: translate(-50%, -50%) scale(1);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+
+.webgl {
+    display: none;
 }
 
 
