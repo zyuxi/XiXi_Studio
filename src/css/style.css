@@ -227,35 +227,37 @@ section .container {
     /* flex: 0.5; */
     /* margin: 10px; */
     position: relative;
-    margin-top: 10px;
+    margin-top: 2vh;
     -webkit-transition: all 700ms ease-in;
     
 }
 
 .containerTitle {
     background-color: #778ccc;
-    height: 50px;
-    font-size: 40px;
+    height: 8vh;
+    font-size: 5vh;
     display: flex;
     align-items: flex-end;
+    margin-bottom: 2vh;
 }
 
 .content_title {
-    font-size: 30px;
+    font-size: 4vh;
     /* position: absolute; */
     padding-left: 10px;
     opacity: 1;
     background-color: #b8c1ec;
-    height: 40px;
+    height: 5vh;
+    /* margin-bottom: 2vh; */
 }
 
 span {
-    font-size: 20px;
+    font-size: 3vh;
     color: #e5f4ff;
 }
 
 .content_comment {
-    font-size: 24px;
+    font-size: 2vh;
     padding-left: 10px;
     /* position: absolute; */
     opacity: 0;
